@@ -13,3 +13,4 @@ jobs:
       - name: env
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: echo "works"
