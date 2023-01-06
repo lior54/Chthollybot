@@ -11,6 +11,5 @@ jobs:
     environment: bot
     steps:
       - name: env
-        env:
-          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-        run: echo "works"
+        run:
+          echo "TEST='test'">> $GITHUB_ENV
