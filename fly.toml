@@ -1,0 +1,8 @@
+# fly.toml file generated for karuta-test-bot on 2023-01-06T23:08:28+02:00
+
+app = "karuta-test-bot"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[env]
