@@ -9,5 +9,7 @@ jobs:
   bot:
     runs-on: ubuntu-latest
     environment: bot
-    env:
-      BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+    steps:
+      - name: env
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
