@@ -19,5 +19,8 @@ jobs:
 
       - run: flyctl deploy --remote-only
   bot:
-    env:
-        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+    steps:
+      -name: print
+        env: 
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: echo "work"
