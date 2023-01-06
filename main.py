@@ -1,7 +1,10 @@
 import sqlite3
-conn = sqlite3.connect("data.db")
+import os
+from dotenv import load_dotenv
+load_dotenv()
+TOKEN = os.getenv("BOT_TOKEN")
+def main():
+    print(TOKEN)
 
-conn.execute('insert into users(server,user,options) values("test", "big", "options");')
-print("added succesfuly")
-conn.commit()
-conn.close()
+if __name__ == "__main__":
+    main()
