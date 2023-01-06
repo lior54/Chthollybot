@@ -9,7 +9,5 @@ jobs:
   bot:
     runs-on: ubuntu-latest
     environment: bot
-    steps:
-      - name: deploy
-      env:
-          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+    env:
+      BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
