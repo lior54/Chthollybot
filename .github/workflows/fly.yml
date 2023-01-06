@@ -21,6 +21,6 @@ jobs:
   bot:
     steps:
       -name: print
-        env: 
-          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-        run: echo "work"
+      env: 
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+      run: echo "work"
