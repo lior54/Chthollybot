@@ -18,9 +18,3 @@ jobs:
       - uses: superfly/flyctl-actions/setup-flyctl@master
 
       - run: flyctl deploy --remote-only
-  bot:
-    steps:
-      -name: print
-      env: 
-        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-      run: echo "work"
