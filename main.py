@@ -21,9 +21,8 @@ def main():
     @client.event
     async def on_message(message):
         if client.user.id != message.author.id:
-            print(message.content, message.author.id)
             if "hello" in message.content.lower():
-                await message.channel.send(f"Hey {message.author.mention}")
+                await message.channel.send(f"Hey {message.author.mention} this my first time here")
             await client.process_commands(message)
     asyncio.run(start(client))
 
