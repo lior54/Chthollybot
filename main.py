@@ -10,7 +10,8 @@ def main():
 
     @client.event
     async def on_ready():
-        print(f"{client.user.name} has connected to discord")
+        if client:
+            print(f"{client.user.name} has connected to discord")
     @client.event
     async def on_message(message):
         if client.user.id != message.author.id:
