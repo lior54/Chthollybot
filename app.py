@@ -5,4 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def dynamic_page():
-    return main.main()
+    return "F"
+
+if __name__ == '__main__':
+    main.main()
