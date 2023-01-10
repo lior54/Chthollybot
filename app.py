@@ -1,5 +1,11 @@
 from flask import Flask
-import main
+import os
 
-app = Flask(main.main())
-app.run('0.0.0.0')
+app = Flask(__name__)
+
+@app.route('/')
+def dynamic_page():
+    return "F"
+
+if __name__ == '__main__':
+    os.system("python main.py")
