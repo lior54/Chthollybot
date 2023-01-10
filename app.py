@@ -8,4 +8,4 @@ def dynamic_page():
     return "F"
 
 if __name__ == '__main__':
-    os.system("python main.py")
+    os.system("python main.py &")
