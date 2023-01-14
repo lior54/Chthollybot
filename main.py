@@ -36,8 +36,6 @@ def main():
     client.run(config.BOT_TOKEN, reconnect=True)
 
 if __name__ == "__main__":
-    if not os.path.exists("modules"):
-        os.chdir("./bot/Chthollybot")
     while True:
         try:
             response = urlopen('http://www.google.com/').read()
