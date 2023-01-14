@@ -1,5 +1,5 @@
 from nextcord.ext import commands
-import time
+import asyncio
 import random
 class Random(commands.Cog, name="Random"):
     """Funny random commands"""
@@ -21,7 +21,7 @@ class Random(commands.Cog, name="Random"):
                 await ctx.send("The rolled number is...")
                 for i in range(3):
                     await ctx.send("🥁")
-                    time.sleep(0.5)
+                    await asyncio.sleep(0.5)
                 await ctx.send(f"{random.randint(1,max)}")
     
     @commands.command()
