@@ -34,4 +34,6 @@ def main():
     client.run(config.BOT_TOKEN, reconnect=True)
 
 if __name__ == "__main__":
+    if not os.path.exists("modules"):
+        os.chdir("./bot/Chthollybot")
     main()
