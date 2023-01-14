@@ -1,8 +1,10 @@
 import os
+import time
 import nextcord
 from nextcord.ext import commands
 import config
-
+import urllib
+from urllib.request import urlopen
 def main():
     client = commands.Bot(intents=nextcord.Intents.all(), command_prefix=config.PREFIX, case_insensitive=True)
     client._help_command = None
@@ -36,4 +38,13 @@ def main():
 if __name__ == "__main__":
     if not os.path.exists("modules"):
         os.chdir("./bot/Chthollybot")
+    while True:
+        try:
+            response = urlopen('http://www.google.com/').read()
+            break
+        except TypeError:
+            pass
+        except urllib.error.URLError:
+            pass
+    time.sleep(10)
     main()
