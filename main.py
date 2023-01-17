@@ -21,7 +21,10 @@ def main():
                 await message.channel.send(f"Hey {message.author.mention} <:love:1063551085660344501>")
             if 'c' in message.content[0].lower():
                 message.content = 'c' + message.content[1:]
-            await client.process_commands(message)
+            try:
+                await client.process_commands(message)
+            except ...:
+                await message.channel.reply(f"{message.content} is missing arguments")
     
     @client.command()
     @commands.is_owner()
@@ -36,9 +39,11 @@ def main():
     client.run(config.BOT_TOKEN, reconnect=True)
 
 if __name__ == "__main__":
+    #waiting for wifi to connect
+    
     while True:
         try:
-            response = urlopen('http://www.google.com/').read()
+            response = urlopen('http://www.google.com/').read()#will return error if wifi is not connected
             break
         except TypeError:
             pass
