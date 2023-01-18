@@ -28,9 +28,14 @@ class Gifs(commands.Cog, name="Gifs"):
 
     
     @nextcord.slash_command(name="kiss", description="Kiss the one you desire")
-    async def hug(self, interaction: nextcord.Interaction, user: nextcord.Member = nextcord.SlashOption(required=True)):
+    async def kiss(self, interaction: nextcord.Interaction, user: nextcord.Member = nextcord.SlashOption(required=True)):
         random.seed(datetime.now())
-        urls = [""]
+        urls = ["https://media.tenor.com/dn_KuOESmUYAAAAC/engage-kiss-anime-kiss.gif",
+        "https://media.tenor.com/F02Ep3b2jJgAAAAC/cute-kawai.gif",
+        "https://media.tenor.com/jnndDmOm5wMAAAAC/kiss.gif",
+        "https://media.tenor.com/e5Ixi9vMTwkAAAAC/tomoya-aki-megumi-katou.gif",
+        "https://media.tenor.com/8JdJyDd1higAAAAC/kiss-cheek.gif",
+        "https://media.tenor.com/woA_lrIFFAIAAAAC/girl-anime.gif"]
         sender = interaction.user.nick if interaction.user.nick else interaction.user.name
         sendTo = user.nick if user.nick else user.name
         embed = nextcord.Embed(color=nextcord.Color.from_rgb(random.randint(0,255), random.randint(0,255),random.randint(0,255)))
