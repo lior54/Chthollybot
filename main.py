@@ -19,13 +19,16 @@ def main():
     async def on_message(message):
         if client.user.id != message.author.id and not message.author.bot:
             if "hello chtholly" in message.content.lower():
-                await message.channel.send(f"Hey {message.author.mention} <:love:1063551085660344501>")
+                await message.channel.send(f"Hey {message.author.mention} <a:PecoHug:761268971617910784>")
             if 'c' in message.content[0].lower():
                 message.content = 'c' + message.content[1:]
-                try:
+                if message.content.lower().startswith("cshutdown"):
                     await client.process_commands(message)
-                except ...:
-                    await message.channel.reply(f"{message.content} is missing arguments")
+                else:
+                    try:
+                        await client.process_commands(message)
+                    except ...:
+                        await message.channel.reply(f"{message.content} is missing arguments")
     
     @client.command()
     @commands.is_owner()

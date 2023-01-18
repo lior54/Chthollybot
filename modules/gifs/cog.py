@@ -26,5 +26,17 @@ class Gifs(commands.Cog, name="Gifs"):
         embed.set_image(url=urls[random.randint(0,len(urls)-1)])
         await interaction.response.send_message(embed=embed)
 
+    
+    @nextcord.slash_command(name="kiss", description="Kiss the one you desire")
+    async def hug(self, interaction: nextcord.Interaction, user: nextcord.Member = nextcord.SlashOption(required=True)):
+        random.seed(datetime.now())
+        urls = [""]
+        sender = interaction.user.nick if interaction.user.nick else interaction.user.name
+        sendTo = user.nick if user.nick else user.name
+        embed = nextcord.Embed(color=nextcord.Color.from_rgb(random.randint(0,255), random.randint(0,255),random.randint(0,255)))
+        embed.set_author(name=f"{sender} is kissing {sendTo}", icon_url=interaction.user.avatar.url)
+        embed.set_image(url=urls[random.randint(0,len(urls)-1)])
+        await interaction.response.send_message(embed=embed)
+
 def setup(bot: commands.Bot):
     bot.add_cog(Gifs(bot))
