@@ -1,5 +1,5 @@
 import os
-import time
+from modules.gifs import generate_embed
 import nextcord
 from nextcord.ext import commands
 import config
@@ -30,6 +30,7 @@ def main():
                     except ...:
                         await message.channel.reply(f"{message.content} is missing arguments")
     
+    
     @client.command()
     @commands.is_owner()
     async def shutdown(ctx):
@@ -37,9 +38,12 @@ def main():
         exit(0)
 
     #loading cogs
+    current = os.getcwd()
     for folder in os.listdir("modules"):
         if os.path.exists(os.path.join("modules", folder, "cog.py")):
             client.load_extension(f"modules.{folder}.cog")
+            os.chdir(current)
+
     client.run(config.BOT_TOKEN, reconnect=True)
 
 if __name__ == "__main__":
