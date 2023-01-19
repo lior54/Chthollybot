@@ -48,7 +48,7 @@ class Gifs(commands.Cog, name="Gifs"):
 
     @nextcord.slash_command(name="punch", description="Someone deserves a punch")
     async def punch(self, interaction: nextcord.Interaction, user: nextcord.Member = nextcord.SlashOption(required=True)):
-        urls = ["https://media.tenor.com/GR_ia5xLWkkAAAAS/koiseka-anime-punch.gif",
+        urls = ["https://media3.giphy.com/media/J0FJ0UNVg9c4mOM4Bw/giphy.gif?cid=790b76119a7fb640fb9915f82102b6ea8ae065404ec19df1&rid=giphy.gif&ct=g",
         "https://media3.giphy.com/media/2weG70cGJulPjuNOJN/giphy.gif?cid=790b7611b5bb1e145b8e589ff157ebabd3f29df8316050cc&rid=giphy.gif&ct=g",
         "https://media1.giphy.com/media/nzDs0NKindycOwVQ7X/giphy.gif?cid=790b761142714ba975b16e89f4a005b742f7a663e1371bae&rid=giphy.gif&ct=g",
         "https://media.tenor.com/D4D8Xj2rqzoAAAAC/anime-punch.gif",
