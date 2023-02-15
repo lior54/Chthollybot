@@ -24,5 +24,16 @@ class Karuta(commands.Cog, name="Karuta"):
             await interaction.response.send_message(file=nextcord.File(fp=f"{interaction.user.id}.txt"))
             os.remove(f"{interaction.user.id}.txt")
 
+    @nextcord.slash_command(name="karuta_duplicates", description="Returning list of  duplicated cards")
+    async def karuta_sorter(self, interaction: nextcord.Interaction, link: str = nextcord.SlashOption(required=True, name="link", description="link to ksheet file")):
+        if not link.startswith("https://") and link.endswith(".csv"):
+            await interaction.response.send_message("invalid link")
+        else:
+            data = modules.karuta_tag_sorter.sorter.karuta_duplicates(link=link, exclude=exclude)
+            with open(f"{interaction.user.id}.txt", "w", encoding="utf-8") as file:
+                file.write(data)
+            await interaction.response.send_message(file=nextcord.File(fp=f"{interaction.user.id}.txt"))
+            os.remove(f"{interaction.user.id}.txt")
+
 def setup(bot: commands.Bot):
     bot.add_cog(Karuta(bot))

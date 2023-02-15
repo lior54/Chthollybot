@@ -8,7 +8,19 @@ class Gifs(commands.Cog, name="Gifs"):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    
+    @commands.command()
+    async def hug(self, ctx, user: nextcord.Member):
+        """Hug the people you love"""
+        urls = ["https://media.tenor.com/J7eGDvGeP9IAAAAC/enage-kiss-anime-hug.gif",
+        "https://media.tenor.com/wUQH5CF2DJ4AAAAC/horimiya-hug-anime.gif",
+        "https://media.tenor.com/H7i6GIP-YBwAAAAC/a-whisker-away-hug.gif",
+        "https://media.tenor.com/l-46qEnHbvEAAAAC/chtholly-world-end.gif",
+        "https://media.tenor.com/b3Qvt--s_i0AAAAC/hugs.gif",
+        "https://media.tenor.com/mmQyXP3JvKwAAAAC/anime-cute.gif",
+        "https://media.tenor.com/Ct4bdr2ZGeAAAAAC/teria-wang-kishuku-gakkou-no-juliet.gif"]
+        embed = generate_embed.create(ctx, user, urls, "hugging")
+        await ctx.send(user.mention, embed=embed)
+
     @nextcord.slash_command(name="hug", description="Hug the people you love")
     async def hug(self, interaction: nextcord.Interaction, user: nextcord.Member = nextcord.SlashOption(required=True)):
         urls = ["https://media.tenor.com/J7eGDvGeP9IAAAAC/enage-kiss-anime-hug.gif",

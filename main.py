@@ -1,5 +1,4 @@
 import os
-from modules.gifs import generate_embed
 import nextcord
 from nextcord.ext import commands
 import config

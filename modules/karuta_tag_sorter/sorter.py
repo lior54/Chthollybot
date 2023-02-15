@@ -49,3 +49,9 @@ def karuta_sorter(link:str, exclude:list):
     for key in unknown:
         send += f"{key}: {', '.join(unknown[key])}\n"
     return send
+
+def karuta_duplicates(link:str):
+    data = urllib.request.urlopen(f"{link}")
+    data = [l.decode("utf-8") for l in data.readlines()]
+    cr = csv.DictReader(data)
+    
