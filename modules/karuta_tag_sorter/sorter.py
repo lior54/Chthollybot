@@ -1,9 +1,8 @@
 import csv
 import urllib.request
 
-
 def sort_order(elem):
-    return elem["series"], elem["character"], -int(elem["edition"]), -int(elem["quality"])
+    return elem[4], elem[3], -int(elem[2]), -int(elem[5])
 
 def karuta_sorter(link:str, exclude:list):
     data = urllib.request.urlopen(f"{link}")
@@ -53,5 +52,26 @@ def karuta_sorter(link:str, exclude:list):
 def karuta_duplicates(link:str):
     data = urllib.request.urlopen(f"{link}")
     data = [l.decode("utf-8") for l in data.readlines()]
+    data = [i.split('","') for i in data]
+    data[1:] = sorted(data[1:], key=sort_order)
+    data = ['","'.join(i) for i in data]
     cr = csv.DictReader(data)
+    cards = {}
+    for row in cr:
+        if row["character"] + ", " + row["series"] not in cards:
+            cards[row["character"] + ", " + row["series"]] = {"1":0, "2":0, "3":0, "4":0, "5":0}
+        cards[row["character"] + ", " + row["series"]][row["edition"]] += 1
     
+    send = ""
+    for char in cards:
+        to_write = []
+        for edition in cards[char]:
+            if cards[char][edition] > 1:
+                to_write.append(edition)
+        if len(to_write) > 0:
+            send = send + char + ": Ed"
+            for edition in to_write:
+                send = send + f" {edition}({cards[char][edition]}),"
+            send = send[:-1] + "\n"
+    print(send)
+    return send

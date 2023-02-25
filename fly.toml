@@ -1,0 +1,8 @@
+# fly.toml file generated for black-bird-6714 on 2023-02-17T16:17:56+02:00
+
+app = "black-bird-6714"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[env]
