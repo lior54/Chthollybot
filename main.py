@@ -6,33 +6,31 @@ import urllib
 from urllib.request import urlopen
 
 def main():
-    client = commands.Bot(intents=nextcord.Intents.all(), command_prefix=config.PREFIX, case_insensitive=True)
-    client._help_command = None
-    @client.event
+    bot = commands.Bot(intents=nextcord.Intents.all(), command_prefix=config.PREFIX, case_insensitive=True)
+    bot._help_command = None
+    @bot.event
     async def on_ready():
-        if client:
-            print(f"{client.user.name} has connected to discord")
+        if bot:
+            print(f"{bot.user.name} has connected to discord")
 
     
-    @client.event
-    async def on_message(message):
-        if client.user.id != message.author.id and not message.author.bot:
+    @bot.event
+    async def on_message(message:nextcord.message.Message):
+        if bot.user.id != message.author.id and not message.author.bot:
             if "hello chtholly" in message.content.lower():
                 await message.channel.send(f"Hey {message.author.mention} <:love:1063551085660344501>")
-            elif "test update" in message.content.lower():
-                await message.channel.send(f"update works")
             elif 'c' in message.content[0].lower():
                 message.content = 'c' + message.content[1:]
                 if message.content.lower().startswith("cshutdown"):
-                    await client.process_commands(message)
+                    await bot.process_commands(message)
                 else:
                     try:
-                        await client.process_commands(message)
+                        await bot.process_commands(message)
                     except ...:
                         await message.channel.reply(f"{message.content} is missing arguments")
     
     
-    @client.command()
+    @bot.command()
     @commands.is_owner()
     async def shutdown(ctx):
         print("shutdown")
@@ -42,10 +40,10 @@ def main():
     current = os.getcwd()
     for folder in os.listdir("modules"):
         if os.path.exists(os.path.join("modules", folder, "cog.py")):
-            client.load_extension(f"modules.{folder}.cog")
+            bot.load_extension(f"modules.{folder}.cog")
             os.chdir(current)
 
-    client.run(config.BOT_TOKEN, reconnect=True)
+    bot.run(config.BOT_TOKEN, reconnect=True)
 
 if __name__ == "__main__":
     #waiting for wifi to connect

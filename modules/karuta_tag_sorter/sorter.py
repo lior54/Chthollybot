@@ -75,3 +75,16 @@ def karuta_duplicates(link:str):
             send = send[:-1] + "\n"
     print(send)
     return send
+
+def karuta_series(link:str):
+    data = urllib.request.urlopen(f"{link}")
+    data = [l.decode("utf-8") for l in data.readlines()]
+    data = [i.split('","') for i in data]
+    data[1:] = sorted(data[1:], key=sort_order)
+    data = ['","'.join(i) for i in data]
+    cr = csv.DictReader(data)
+    series = set()
+    for row in cr:
+        if row["series"] not in series:
+            series.add(row["series"])
+    return "\n".join(sorted(series, key=str.lower))
